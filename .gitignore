@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.fif
+*.parquet
+.venv/
+
+# data and outputs that may contain original IDs or recording dates
+*.xlsx
+*.xlsb
+*idmap*
+INTERNAL_*
+FIF_index*
+config/excluded_participants.txt
+docs/PRIVACY_SCAN.md
+
+# local-only documentation
+README.md
+
+# derived results (supplementary tables, figures) kept local
+data/

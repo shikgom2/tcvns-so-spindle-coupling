@@ -1,0 +1,3 @@
+# Copy this file to excluded_participants.txt and list one participant code per line.
+# These are participants without analysable EEG, excluded from the questionnaire analyses.
+# The real list is not version-controlled.

@@ -1,2 +1,0 @@
-# tcvns-so-spindle-coupling
-
