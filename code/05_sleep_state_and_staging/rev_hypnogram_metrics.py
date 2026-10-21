@@ -8,6 +8,7 @@ Stage codes in the 'sleep' channel: 0 W, 1 REM, 2 N1, 3 N2, 4 N3.
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -15,9 +16,11 @@ import mne
 import numpy as np
 import pandas as pd
 from scipy import stats
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
-T = Path(r"D:/SO-Spindle논문/Final analysis/tables")
+T = LP.PROJECT_ROOT / "Final analysis/tables"
 CODE = {0: "W", 1: "R", 2: "N1", 3: "N2", 4: "N3"}
 COLS = ["recording_min", "latency_sleep_min", "latency_N2_min", "TST_min", "sleep_efficiency_pct",
         "W_min", "N1_min", "N2_min", "N3_min", "REM_min", "WASO_min", "N1_pct", "N2_pct", "N3_pct", "REM_pct", "W_pct"]

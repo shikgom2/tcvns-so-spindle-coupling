@@ -8,6 +8,7 @@ d per-electrode effect topography (yellow star at uncorrected P<.05)
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -20,11 +21,14 @@ import numpy as np                                                # noqa: E402
 import pandas as pd                                               # noqa: E402
 from scipy import stats                                           # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
 import figures_topography as TP
 import paperstyle as PS                                   # noqa: E402
 
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 TBL = _R / "Final analysis/tables"

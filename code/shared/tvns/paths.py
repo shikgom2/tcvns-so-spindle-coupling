@@ -2,7 +2,7 @@
 
 Why this is needed
 ------------------
-On 2026-09-10 the contents of `E:/DATA` were copied into `rawfiles_fromJY/DATA/Data/`, which changed the layout.
+On 2026-09-10 the contents of `<DATA_ROOT_ALT>` were copied into `rawfiles_fromJY/DATA/Data/`, which changed the layout.
 The old curated structure (`DATA/Data`, `DATA/IIT_data`, `DATA/VIP_all`, `DATA/Raw_data/EC`) and
 the new E: mirror structure (`DATA/Data/Data`, `DATA/Data/iit_delivery/Data`, `DATA/Data/Data/VIP_all`,
 `DATA/Data/Raw_data/EC`) **differ even in folder names** — it is not a simple one-level move.
@@ -14,15 +14,20 @@ If the data are moved again, the code follows.
 """
 from __future__ import annotations
 
+import sys
 from functools import lru_cache
 from pathlib import Path
 
+if not __package__: sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # run as a script: put code/shared on sys.path
+import local_paths as LP  # noqa: E402
+
 # Search starting points (earlier entries take precedence)
 BASES = [
-    Path("D:/HJ/vns/rawfiles_fromJY/DATA"),
-    Path("D:/HJ/vns/rawfiles_fromJY"),
-    Path("E:/DATA"),
+    LP.optional("DATA_ROOT", "DATA"),
+    LP.optional("DATA_ROOT"),
+    LP.optional("DATA_ROOT_ALT"),
 ]
+BASES = [b for b in BASES if b is not None]  # roots not set in local_paths are skipped
 MAX_DEPTH = 5
 
 

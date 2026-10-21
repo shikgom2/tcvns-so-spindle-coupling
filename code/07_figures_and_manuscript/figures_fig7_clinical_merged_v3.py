@@ -8,6 +8,7 @@ Output: Figure_07_clinical_scales_and_severity.png/pdf, SEV_6_widespread_by_ISI.
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -21,11 +22,13 @@ from matplotlib.lines import Line2D                               # noqa: E402
 from scipy import stats                                           # noqa: E402
 
 warnings.filterwarnings("ignore")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 import paperstyle as PS                                           # noqa: E402
 import figures_questionnaire as FQ                                # noqa: E402
 import severity_moderation as SM                                  # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 T = R / "Final analysis/tables"
 FIG = R / "Final analysis/manuscript/figures"
 C = PS.C; STIM, NOST = C["stim"], C["nost"]

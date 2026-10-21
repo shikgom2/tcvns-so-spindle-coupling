@@ -11,6 +11,7 @@ Output: Final analysis/tables/ALT_I_absolute_threshold.csv
 from __future__ import annotations
 
 import re
+import sys
 import warnings
 from pathlib import Path
 
@@ -18,8 +19,11 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 NN = R / "이전/outputs/nn2023"
 INV = pd.read_csv(R / "Final analysis/tables/FIF_index.csv")
 OUT = R / "Final analysis/tables/ALT_I_absolute_threshold.csv"

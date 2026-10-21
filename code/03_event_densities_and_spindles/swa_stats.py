@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -13,10 +14,12 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 from scipy import stats
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
 
-R = Path(r"D:/SO-Spindle논문/Final analysis")
+R = LP.PROJECT_ROOT / "Final analysis"
 T = pd.read_csv(R / "tables/SWA_windows.csv")
 OUT = R / "tables/SWA_stats.csv"
 REGS = ["Frontal", "Temporal", "Central", "Parietal"]

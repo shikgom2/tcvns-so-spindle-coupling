@@ -2,13 +2,16 @@
 """Fixed analysis-frame check — does the single population used throughout the manuscript hold for every result."""
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
 import pandas as pd
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 F = _R / "Final analysis"
@@ -101,4 +104,4 @@ chk = [("R1 interaction", "all 75", sorted(T.n_all.unique())),
 for a, b, c in chk:
     L.append("  %-24s expected %-18s observed %s" % (a, b, c))
 
-open(r"D:/_tmp_claude/frame.txt", "w", encoding="utf-8").write("\n".join(L))
+open(str(LP.SCRATCH_DIR / "frame.txt"), "w", encoding="utf-8").write("\n".join(L))

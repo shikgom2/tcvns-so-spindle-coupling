@@ -12,6 +12,7 @@ Output  tables/REV_*.csv,  manuscript/figures/v14oct2026/Supplementary_Figure_7_
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -25,7 +26,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt                                   # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문/Final analysis")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
+R = LP.PROJECT_ROOT / "Final analysis"
 T = R / "tables"
 FIG = R / "manuscript/figures/v14oct2026"
 S1 = pd.read_csv(R / "Brain submission/supplementary tables/Supplementary_Table_01_S1_session_metrics.csv")

@@ -20,8 +20,10 @@ from scipy import signal
 warnings.filterwarnings("ignore")
 import mne                                                        # noqa: E402
 mne.set_log_level("ERROR")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 INV = pd.read_csv(R / "Final analysis/tables/FIF_index.csv")
 OUT = R / "Final analysis/tables/SWA_windows.csv"
 WINS = {"baseline": "pre", "stimulation 1": "stim", "recovery 1": "post"}

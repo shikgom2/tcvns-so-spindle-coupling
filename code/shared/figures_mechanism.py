@@ -10,6 +10,7 @@ Detector Staresina (0.30-1.25 Hz, 0.8-2.0 s, mean + 1 SD), stages N2+N3.
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -22,11 +23,13 @@ import numpy as np                                                # noqa: E402
 import pandas as pd                                               # noqa: E402
 from matplotlib.lines import Line2D                               # noqa: E402
 from scipy import stats                                           # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
 import paperstyle as PS                                           # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 FIG = R / "Final analysis/figures"
 RNG = np.random.default_rng(20261003)

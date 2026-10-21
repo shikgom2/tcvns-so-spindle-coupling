@@ -10,6 +10,7 @@ Detector is Staresina (0.30-1.25 Hz, 0.8-2.0 s, mean + 1 SD), stages N2+N3.
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -17,10 +18,12 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 from scipy import stats
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 ROIS = ["Frontal", "Temporal", "Central", "Parietal"]
 RNG = np.random.default_rng(20261004)

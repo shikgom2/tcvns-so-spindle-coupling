@@ -20,9 +20,11 @@ import pandas as pd
 warnings.filterwarnings("ignore")
 import mne                                                        # noqa: E402
 from scipy.signal import butter, filtfilt, hilbert                # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 mne.set_log_level("ERROR")
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 TBL = _R / "Final analysis/tables"
 SF = 125.0
 REGIONS = {"Frontal": ["Fp1", "Fp2", "F3", "F4"],

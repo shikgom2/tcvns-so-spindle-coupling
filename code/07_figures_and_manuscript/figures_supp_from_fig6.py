@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -14,12 +15,15 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt                                   # noqa: E402
 import pandas as pd                                               # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
 import paperstyle as PS                                           # noqa: E402
 import figures_mechanism as FM                                    # noqa: E402
 import figures_timecourse as FT                                   # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 SF = R / "Final analysis/manuscript/figures"
 

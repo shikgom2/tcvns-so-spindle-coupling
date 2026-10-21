@@ -21,7 +21,9 @@ import pandas as pd                                               # noqa: E402
 from scipy import stats                                           # noqa: E402
 
 warnings.filterwarnings("ignore")
-_R = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import local_paths as LP  # noqa: E402
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 TBL = _R / "Final analysis/tables"

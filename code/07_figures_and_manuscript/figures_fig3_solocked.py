@@ -10,6 +10,7 @@ Tests
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -20,9 +21,12 @@ import numpy as np                                                # noqa: E402
 import pandas as pd                                               # noqa: E402
 from scipy import stats                                           # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
 import paperstyle as PS
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 TBL = _R / "Final analysis/tables"
 FIG = _R / "Final analysis/figures"
 

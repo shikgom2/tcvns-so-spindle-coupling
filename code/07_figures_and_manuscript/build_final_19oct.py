@@ -14,6 +14,7 @@ from __future__ import annotations
 import copy
 import re
 import shutil
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -24,8 +25,10 @@ from docx.shared import Inches, Pt, RGBColor
 from docx.text.paragraph import Paragraph
 
 import final_second_pass as SP
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문/Final analysis")
+R = LP.PROJECT_ROOT / "Final analysis"
 B = R / "Brain submission"
 T = R / "tables"
 SRC = B / "Manuscript_Brain_submission_19Oct2026_EIC_R2_comments.docx"

@@ -9,6 +9,7 @@ Part B  detection and criterion: window-specific thresholds (same cells), record
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -16,9 +17,12 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-T = Path(r"D:/SO-Spindle논문/Final analysis/tables")
-S1 = Path(r"D:/SO-Spindle논문/Final analysis/Brain submission/supplementary tables/Supplementary_Table_01_S1_session_metrics.csv")
+T = LP.PROJECT_ROOT / "Final analysis/tables"
+S1 = LP.PROJECT_ROOT / "Final analysis/Brain submission/supplementary tables/Supplementary_Table_01_S1_session_metrics.csv"
 REGS = ["Frontal", "Temporal", "Central", "Parietal"]
 
 

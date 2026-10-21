@@ -6,6 +6,7 @@ d    absolute power in the stimulation window, both conditions
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -17,10 +18,13 @@ import pandas as pd                                               # noqa: E402
 from matplotlib.lines import Line2D                               # noqa: E402
 from scipy import stats                                           # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
 import paperstyle as PS                                           # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문/Final analysis")
+R = LP.PROJECT_ROOT / "Final analysis"
 OUT = R / "manuscript/figures/v14oct2026/Supplementary_Figure_6_slow_wave_activity"
 T = pd.read_csv(R / "tables/SWA_windows.csv")
 REGS = ["Frontal", "Parietal"]

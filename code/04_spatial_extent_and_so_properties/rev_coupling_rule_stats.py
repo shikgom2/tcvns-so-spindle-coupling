@@ -8,6 +8,7 @@ Output  REV_coupling_rule_sensitivity.csv  condition x window interaction per re
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -16,9 +17,11 @@ import pandas as pd
 import statsmodels.formula.api as smf
 
 warnings.filterwarnings("ignore")
-T = Path(r"D:/SO-Spindle논문/Final analysis/tables")
-EVENTS = Path(r"D:/SO-Spindle논문/이전/redetect_multi/staresina_N2.parquet")
-IDMAP = Path(r"D:/SO-Spindle논문/이전/outputs/paper/INTERNAL_session_idmap.csv")       # internal: links event rows to session codes
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+T = LP.PROJECT_ROOT / "Final analysis/tables"
+EVENTS = LP.PROJECT_ROOT / "이전/redetect_multi/staresina_N2.parquet"
+IDMAP = LP.PROJECT_ROOT / "이전/outputs/paper/INTERNAL_session_idmap.csv"       # internal: links event rows to session codes
 REG = {"Frontal": ["Fp1", "Fp2", "F3", "F4"], "Temporal": ["F7", "F8", "T3", "T4"], "Central": ["C3", "Cz", "C4"], "Parietal": ["P3", "P4"]}
 BL = {"baseline": "pre", "stimulation 1": "stim", "recovery 1": "post"}
 

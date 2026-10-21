@@ -21,11 +21,13 @@ from scipy.signal import butter, filtfilt, hilbert
 
 warnings.filterwarnings("ignore")
 import logging; logging.getLogger("yasa").setLevel(logging.ERROR)
-sys.path.insert(0, r"D:/SO-Spindle논문/code/paper")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+sys.path.insert(0, str(LP.PROJECT_ROOT / "code/paper"))
 import rev_redetect as RD                                         # noqa: E402
 from tvns.jy_source import bad_annot_mask                         # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문/Final analysis/tables")
+R = LP.PROJECT_ROOT / "Final analysis/tables"
 SO_AMP = dict(amp_neg=(10, 200), amp_pos=(5, 150), amp_ptp=(20, 350))
 
 

@@ -26,7 +26,10 @@ from scipy.signal import butter, filtfilt, hilbert                 # noqa: E402
 
 from so_locked_windows import SF, STAGE, SP_LO, SP_HI, spindle_peaks
 
-_R = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
+_R = LP.PROJECT_ROOT
 TBL = _R / "Final analysis/tables"
 REGIONS = {"Frontal": ["Fp1", "Fp2", "F3", "F4"],
            "Parietal": ["P3", "P4"],

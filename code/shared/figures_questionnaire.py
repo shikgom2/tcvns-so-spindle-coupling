@@ -6,6 +6,7 @@ otherwise grey, but the value is still shown.
 """
 from __future__ import annotations
 
+import sys
 import textwrap
 import warnings
 from pathlib import Path
@@ -16,16 +17,18 @@ import matplotlib.pyplot as plt                                   # noqa: E402
 import numpy as np                                                # noqa: E402
 import pandas as pd                                               # noqa: E402
 from scipy import stats                                           # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 T = _R / "Final analysis/tables"
 FIG = _R / "Final analysis/figures"
 FIG.mkdir(parents=True, exist_ok=True)
-XLSB = Path(r"D:/HJ/vns/rawfiles_fromJY/DATA/Data/Data/tVNS_Sleep.xlsb")
-IITF = Path(r"D:/HJ/vns/rawfiles_fromJY/DATA/Data/iit_delivery/Data"
+XLSB = LP.DATA_ROOT / "DATA/Data/Data/tVNS_Sleep.xlsb"
+IITF = (LP.DATA_ROOT / "DATA/Data/iit_delivery/Data"
             "/IIT_Assessments.xlsx")
 
 plt.rcParams.update({

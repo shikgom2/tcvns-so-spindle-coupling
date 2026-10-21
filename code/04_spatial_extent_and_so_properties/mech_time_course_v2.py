@@ -11,6 +11,7 @@ Detector Staresina, N2+N3 (re-detected event table). Outputs go to Final analysi
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -21,7 +22,10 @@ from scipy import stats
 warnings.filterwarnings("ignore")
 import mech_so_properties as MP                                    # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 SF = 125.0
 BIN = 5.0                      # min

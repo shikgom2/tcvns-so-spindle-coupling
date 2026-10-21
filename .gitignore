@@ -18,3 +18,6 @@ README.md
 
 # derived results (supplementary tables, figures) kept local
 data/
+
+# machine-specific paths
+config/local_paths.json

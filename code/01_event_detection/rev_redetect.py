@@ -22,14 +22,15 @@ import pandas as pd
 from scipy import signal
 
 warnings.filterwarnings("ignore")
-sys.path.insert(0, r"D:/HJ/vns/04_SHARED/code")
-sys.path.insert(0, r"D:/SO-Spindle논문/이전/reanalysis_code")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+sys.path.insert(0, str(LP.PROJECT_ROOT / "이전/reanalysis_code"))
 import mne                                                        # noqa: E402
 mne.set_log_level("ERROR")
 from tvns.jy_source import bad_annot_mask, group_consecutive, EEG_CFG   # noqa: E402
 import staresina_detector as SD                                   # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문/Final analysis/tables")
+R = LP.PROJECT_ROOT / "Final analysis/tables"
 INV = pd.read_csv(R / "FIF_index.csv")
 BLOCKS = {"baseline": "pre", "stimulation 1": "stim", "recovery 1": "post"}
 CH = ["Fp1", "Fp2", "F3", "F4", "F7", "F8", "T3", "T4", "C3", "Cz", "C4", "P3", "P4"]

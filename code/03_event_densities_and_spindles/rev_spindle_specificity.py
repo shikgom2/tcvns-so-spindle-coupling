@@ -20,13 +20,15 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt                                   # noqa: E402
 
-sys.path.insert(0, r"D:/SO-Spindle논문/code/paper")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+sys.path.insert(0, str(LP.PROJECT_ROOT / "code/paper"))
 import rev_redetect as RD                                         # noqa: E402
 import staresina_detector as SD                                   # noqa: E402
 from tvns.jy_source import bad_annot_mask                         # noqa: E402
 import paperstyle as PS                                           # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문/Final analysis")
+R = LP.PROJECT_ROOT / "Final analysis"
 T = R / "tables"
 FIG = R / "manuscript/figures/v14oct2026/Supplementary_Figure_8_spindle_specificity"
 RNG = np.random.default_rng(20261018)

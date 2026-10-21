@@ -26,10 +26,11 @@ import pandas as pd
 from .jy_source import EEG_CFG, extract_N2_raw, bad_annot_mask
 
 # The raw-data layout can change when data are migrated, so roots are **located by signature files** (tvns.paths).
-# 2026-09-10: E:/DATA was copied into rawfiles_fromJY/DATA/Data/ and the folder names changed as well.
+# 2026-09-10: <DATA_ROOT_ALT> was copied into rawfiles_fromJY/DATA/Data/ and the folder names changed as well.
 from . import paths as _paths
+import local_paths as LP  # noqa: E402
 
-_FALLBACK = Path("D:/HJ/vns/rawfiles_fromJY/DATA")
+_FALLBACK = LP.optional("DATA_ROOT", "DATA")
 DATA = _paths.data_root() or (_FALLBACK / "Data")      # Recording_metadata.xlsx + TB/
 ROOT = DATA.parent                                      # parent, because fif_path starts with 'Data/...'
 IIT_ROOT = _paths.iit_root() or (_FALLBACK / "IIT_data")

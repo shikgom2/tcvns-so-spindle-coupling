@@ -11,6 +11,7 @@ Panel functions are used as is from figures_fig2_merged (FM) and figures_ppc_spe
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -23,12 +24,14 @@ from matplotlib.colors import Normalize                           # noqa: E402
 from matplotlib.lines import Line2D                               # noqa: E402
 
 warnings.filterwarnings("ignore")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 import paperstyle as PS                                           # noqa: E402
 import figures_fig2_merged as FM                                  # noqa: E402
 import figures_ppc_spectra as FP                                  # noqa: E402
 import figures_fig3_solocked as SL                                # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 OUT = R / "Final analysis/manuscript/figures/Figure_04_spindle_envelope_and_frequency_specificity"
 

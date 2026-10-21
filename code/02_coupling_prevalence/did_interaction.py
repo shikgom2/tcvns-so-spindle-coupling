@@ -2,6 +2,7 @@
 """DiD + Treatment x Phase interaction + visit-order sensitivity."""
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -12,7 +13,10 @@ from scipy import stats
 warnings.filterwarnings("ignore")
 import statsmodels.formula.api as smf                             # noqa: E402
 
-P = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
+P = LP.PROJECT_ROOT
 OUT = P / "outputs/paper"
 RNG = np.random.default_rng(20261003)
 ROIS = ["Frontal", "Temporal", "Central", "Parietal"]

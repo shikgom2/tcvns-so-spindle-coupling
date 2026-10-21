@@ -33,8 +33,9 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
-sys.path.insert(0, r"D:/HJ/vns/04_SHARED/code")
-sys.path.insert(0, r"D:/SO-Spindle논문/reanalysis_code")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+sys.path.insert(0, str(LP.PROJECT_ROOT / "reanalysis_code"))
 
 import mne
 mne.set_log_level("ERROR")
@@ -43,10 +44,10 @@ from tvns.jy_source import bad_annot_mask, group_consecutive, EEG_CFG
 from tvns.jy_detector import build_events_for_session
 import staresina_detector as SD
 
-BASE = Path(r"D:/SO-Spindle논문/ppt_headline_cells")
-OUT = Path(r"D:/SO-Spindle논문/redetect_multi")
+BASE = LP.PROJECT_ROOT / "ppt_headline_cells"
+OUT = LP.PROJECT_ROOT / "redetect_multi"
 OUT.mkdir(parents=True, exist_ok=True)
-AUD = pd.read_csv(r"D:/HJ/so_spindle_2/validation_pipeline/outputs/audit/AUDIT_sessions.csv")
+AUD = pd.read_csv(LP.AUDIT_ROOT / "outputs/audit/AUDIT_sessions.csv")
 AUD["stem"] = AUD["파일"].str.replace("_raw_fin.fif", "", regex=False)
 AUD["date"] = AUD.stem.str.extract(r"_(\d{4}-\d{2}-\d{2}-\d{4})")
 BLOCKS = ["baseline", "stimulation 1", "recovery 1"]

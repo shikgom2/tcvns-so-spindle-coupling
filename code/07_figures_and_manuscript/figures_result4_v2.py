@@ -9,6 +9,7 @@ e,f,g per-electrode d_z topographies, three contrasts
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -20,12 +21,14 @@ import matplotlib.transforms as mtransforms                       # noqa: E402
 import numpy as np                                                # noqa: E402
 import pandas as pd                                               # noqa: E402
 from scipy import stats                                           # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
 import figures_topography as TP
 import paperstyle as PS                                   # noqa: E402
 
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 TBL = _R / "Final analysis/tables"

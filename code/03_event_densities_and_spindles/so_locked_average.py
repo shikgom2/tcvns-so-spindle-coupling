@@ -22,7 +22,9 @@ import mne                                                        # noqa: E402
 from scipy.signal import butter, filtfilt, hilbert                # noqa: E402
 
 mne.set_log_level("ERROR")
-_R = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 TBL = _R / "Final analysis/tables"

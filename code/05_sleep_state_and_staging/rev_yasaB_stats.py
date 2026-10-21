@@ -11,12 +11,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
-sys.path.insert(0, r"D:/SO-Spindle논문/code/paper")
+sys.path.insert(0, str(LP.PROJECT_ROOT / "code/paper"))
 import rev_avgref_stats as AS                                     # noqa: E402
 
-T = Path(r"D:/SO-Spindle논문/Final analysis/tables")
+T = LP.PROJECT_ROOT / "Final analysis/tables"
 REGS = ["Frontal", "Temporal", "Central", "Parietal"]
 
 

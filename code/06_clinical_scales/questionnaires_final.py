@@ -9,6 +9,7 @@ Produces all three value-handling variants.
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -16,13 +17,16 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 T = _R / "Final analysis/tables"
 T.mkdir(parents=True, exist_ok=True)
-XLSB = Path(r"D:/HJ/vns/rawfiles_fromJY/DATA/Data/Data/tVNS_Sleep.xlsb")
-IITF = Path(r"D:/HJ/vns/rawfiles_fromJY/DATA/Data/iit_delivery/Data"
+XLSB = LP.DATA_ROOT / "DATA/Data/Data/tVNS_Sleep.xlsb"
+IITF = Path(LP.DATA_ROOT / "DATA/Data/iit_delivery/Data"
             "/IIT_Assessments.xlsx")
 
 # Participants excluded from the questionnaire analyses (no analysable EEG).
@@ -230,4 +234,4 @@ m.to_csv(T / "Q5_three_variants.csv", index=False, encoding="utf-8-sig")
 L.append("")
 L.append("=== 세 판 나란히 ===")
 L.append(m.round(4).to_string(index=False))
-open(r"D:/_tmp_claude/q5.txt", "w", encoding="utf-8").write("\n".join(L))
+open(str(LP.SCRATCH_DIR / "q5.txt"), "w", encoding="utf-8").write("\n".join(L))

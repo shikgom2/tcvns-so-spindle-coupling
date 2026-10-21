@@ -8,6 +8,7 @@ Outputs
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -15,8 +16,11 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 T = _R / "Final analysis/tables"
@@ -203,4 +207,4 @@ L.append("  q<.05 칸수  varying %d  ->  fixed %d"
 ch = cmp_[cmp_.changed_verdict]
 L.append("  판정이 바뀐 칸 %d개:" % len(ch))
 L.append(ch.round(4).to_string(index=False))
-open(r"D:/_tmp_claude/frame2.txt", "w", encoding="utf-8").write("\n".join(L))
+open(str(LP.SCRATCH_DIR / "frame2.txt"), "w", encoding="utf-8").write("\n".join(L))

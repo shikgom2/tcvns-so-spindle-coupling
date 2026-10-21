@@ -9,6 +9,7 @@ The word 'washout' is not used anywhere in the outputs.
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -20,7 +21,9 @@ warnings.filterwarnings("ignore")
 import statsmodels.api as sm                                     # noqa: E402
 import statsmodels.formula.api as smf                            # noqa: E402
 
-P = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+P = LP.PROJECT_ROOT
 OUT = P / "outputs/paper"
 OUT.mkdir(parents=True, exist_ok=True)
 RNG = np.random.default_rng(20261003)

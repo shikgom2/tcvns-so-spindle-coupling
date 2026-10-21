@@ -32,6 +32,8 @@ import os
 import sys
 from pathlib import Path
 
+import local_paths as LP  # noqa: E402
+
 # The original module imports matplotlib at top level (`import matplotlib.pyplot as plt` at the top of
 # SO_Spindle_coupling.py). Fix the backend so that headless runs are safe.
 os.environ.setdefault("MPLBACKEND", "Agg")
@@ -40,7 +42,7 @@ os.environ.setdefault("MPLBACKEND", "Agg")
 # (no silent workaround: if our reimplementation silently stood in for a missing original, the Step gate would again be meaningless).
 # The path may change with data migration, so it is located via a signature file (paths.jy_source_root).
 from . import paths as _paths
-_JY_ROOT = _paths.jy_source_root() or Path("D:/HJ/vns/rawfiles_fromJY/DATA/vip2_delivery")
+_JY_ROOT = _paths.jy_source_root() or LP.DATA_ROOT / "DATA/vip2_delivery"
 if not _JY_ROOT.exists():
     raise FileNotFoundError(
         f"원본(학위논문 파이프라인) 코드 폴더가 없습니다: {_JY_ROOT}\n"

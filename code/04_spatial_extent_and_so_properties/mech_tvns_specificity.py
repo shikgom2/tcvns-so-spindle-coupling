@@ -10,6 +10,7 @@ Input: M7_time_course_bins.csv and the re-detection event table. Output: M8_*.cs
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -17,11 +18,13 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 from scipy import stats
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
 import mech_so_properties as MP                                    # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 SF = 125.0
 BIN = 5.0

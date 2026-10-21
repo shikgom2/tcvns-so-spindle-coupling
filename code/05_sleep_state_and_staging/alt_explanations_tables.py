@@ -12,6 +12,7 @@ Output: Final analysis/tables/ALT_*.csv and console summary
 """
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -19,7 +20,10 @@ import pandas as pd
 import statsmodels.formula.api as smf
 from scipy import stats
 
-R = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
+R = LP.PROJECT_ROOT
 OLD = R / "이전/outputs/paper/S_Table_session_metrics.csv"
 S1 = R / "Final analysis/manuscript/supplementary materials/tables/S1_session_metrics.csv"
 S8 = R / "Final analysis/manuscript/supplementary materials/tables/S8_event_densities.csv"

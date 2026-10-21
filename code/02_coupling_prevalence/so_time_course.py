@@ -16,6 +16,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 
 warnings.filterwarnings("ignore")
 import mne                                                        # noqa: E402
@@ -25,7 +27,7 @@ from so_locked_windows import (SF, STAGE, NS, SO_LO, SO_HI, SP_LO,  # noqa: E402
                                SP_HI, bp, detect_so, spindle_peaks)
 from scipy.signal import hilbert                                   # noqa: E402
 
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 TBL = _R / "Final analysis/tables"
 CHS = ["Fp1", "Fp2", "F3", "F4", "F7", "F8", "T3", "T4",
        "C3", "Cz", "C4", "P3", "P4"]

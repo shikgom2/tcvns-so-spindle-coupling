@@ -14,11 +14,13 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, r"D:/SO-Spindle논문/code/paper")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+sys.path.insert(0, str(LP.PROJECT_ROOT / "code/paper"))
 import matplotlib
 matplotlib.use("Agg")
 
-R = Path(r"D:/SO-Spindle논문/Final analysis")
+R = LP.PROJECT_ROOT / "Final analysis"
 V19 = R / "manuscript/figures/v19oct2026"
 V19.mkdir(exist_ok=True)
 RUN_ALL = "--all" in sys.argv

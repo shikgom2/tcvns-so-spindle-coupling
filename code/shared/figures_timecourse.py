@@ -10,6 +10,7 @@ Inputs: M7_time_course_bins.csv, M7_lag_correlation.csv (mech_time_course.py)
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -22,9 +23,11 @@ import pandas as pd                                               # noqa: E402
 from scipy import stats                                           # noqa: E402
 
 warnings.filterwarnings("ignore")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import local_paths as LP  # noqa: E402
 import paperstyle as PS                                           # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 FIG = R / "Final analysis/figures"
 STIM, NOST, INK, INK2 = PS.C["stim"], PS.C["nost"], PS.C["ink"], PS.C["ink2"]

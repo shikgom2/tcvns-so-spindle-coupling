@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import glob
 import os
+import sys
 import warnings
 from pathlib import Path
 
@@ -18,9 +19,12 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import cohen_kappa_score, confusion_matrix
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-T = Path(r"D:/SO-Spindle논문/Final analysis/tables")
-YASA_DIR = r"D:/HJ/vns/rawfiles_fromJY/DATA/Data/iit_delivery/Data/IITY"        # YASA-staged copies of the stream-B recordings
+T = LP.PROJECT_ROOT / "Final analysis/tables"
+YASA_DIR = str(LP.DATA_ROOT / "DATA/Data/iit_delivery/Data/IITY")        # YASA-staged copies of the stream-B recordings
 CODE = {0: "W", 1: "R", 2: "N1", 3: "N2", 4: "N3"}; L = ["W", "N1", "N2", "N3", "R"]
 
 

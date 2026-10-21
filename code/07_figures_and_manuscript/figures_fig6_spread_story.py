@@ -10,6 +10,7 @@ Changes
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -21,12 +22,14 @@ import pandas as pd                                               # noqa: E402
 from matplotlib.lines import Line2D                               # noqa: E402
 
 warnings.filterwarnings("ignore")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
 import paperstyle as PS                                           # noqa: E402
 import figures_mechanism as FM                                    # noqa: E402
 import figures_timecourse as FT                                   # noqa: E402
 import figures_fig8_full as F8                                    # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 TBL = R / "Final analysis/tables"
 OUT = R / "Final analysis/manuscript/figures/Figure_06_spatial_extent_and_coupling"
 STIM, NOST, INK, INK2 = PS.C["stim"], PS.C["nost"], PS.C["ink"], PS.C["ink2"]

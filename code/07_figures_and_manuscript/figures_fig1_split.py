@@ -10,6 +10,7 @@ Figure 2  between-condition contrast in the stimulation window (level difference
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -21,6 +22,9 @@ import pandas as pd                                               # noqa: E402
 from matplotlib.lines import Line2D                               # noqa: E402
 from scipy import stats                                           # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
 import paperstyle as PS                                           # noqa: E402
 import figures_raincloud as RC                                    # noqa: E402
@@ -29,7 +33,7 @@ import figures_fig1_combined as F1                                # noqa: E402
 import figures_result2 as F4                                      # noqa: E402
 import figures_fig1_merged as FM                                  # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문")
+R = LP.PROJECT_ROOT
 OUTDIR = R / "Final analysis/manuscript/figures/v14oct2026"
 C = PS.C
 STIM, NOST, NS_ = C["stim"], C["nost"], C["ns"]

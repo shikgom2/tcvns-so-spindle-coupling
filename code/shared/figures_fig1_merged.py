@@ -9,6 +9,7 @@ a–e reuse the data and rules of figures_fig1_combined, f–i those of figures_
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -22,6 +23,8 @@ from scipy import stats                                           # noqa: E402
 from matplotlib.lines import Line2D                               # noqa: E402
 
 warnings.filterwarnings("ignore")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import local_paths as LP  # noqa: E402
 import paperstyle as PS                                           # noqa: E402
 import figures_raincloud as RC
 import figures_topography as TP                                   # noqa: E402
@@ -29,7 +32,7 @@ import figures_fig1_combined as F1                                # noqa: E402
 import figures_result2 as F4                                      # noqa: E402
 import figures_schematic as SCH                                   # noqa: E402
 
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 FIG = _R / "Final analysis/figures"
 C = PS.C
 STIM, NOST, NS_ = C["stim"], C["nost"], C["ns"]

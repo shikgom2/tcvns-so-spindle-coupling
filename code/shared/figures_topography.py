@@ -8,6 +8,7 @@ Significant electrodes are marked with a star + bold outline.
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -22,8 +23,11 @@ from matplotlib.patches import Circle, Polygon                    # noqa: E402
 from scipy.interpolate import griddata                            # noqa: E402
 from scipy.ndimage import gaussian_filter                         # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 TBL = _R / "Final analysis/tables"

@@ -1,0 +1,8 @@
+{
+  "PROJECT_ROOT": "/path/to/analysis_project",
+  "DATA_ROOT": "/path/to/recording_data",
+  "DATA_ROOT_ALT": "",
+  "SOSPINDLE_ROOT_ALT": "",
+  "AUDIT_ROOT": "/path/to/validation_pipeline",
+  "SCRATCH_DIR": "/path/to/tmp"
+}

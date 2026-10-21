@@ -2,18 +2,21 @@
 """Locate the .fif files of the recording inventory on disk and attach their paths."""
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-_R = Path(r"D:/SO-Spindle논문")
+_R = LP.PROJECT_ROOT
 P = _R if (_R / "outputs/paper").exists() else _R / "이전"
 OUT = P / "outputs/paper"
 TBL = _R / "Final analysis/tables"
-ROOTS = [_R / "이전", Path(r"D:/HJ/vns/rawfiles_fromJY"), Path(r"E:/SOspindle"),
-         Path(r"E:/DATA")]
+ROOTS = [r for r in (_R / "이전", LP.optional("DATA_ROOT"), LP.optional("SOSPINDLE_ROOT_ALT"), LP.optional("DATA_ROOT_ALT")) if r is not None]
 
 idx, bystem = {}, {}
 for root in ROOTS:
@@ -60,4 +63,4 @@ L.append("")
 L.append("못 찾은 것 예시:")
 L.append(inv[inv.fif_path.isna()][["Session ID", "Cohort", "Condition",
                                    col]].head(8).to_string(index=False))
-open(r"D:/_tmp_claude/fifidx.txt", "w", encoding="utf-8").write("\n".join(L))
+open(str(LP.SCRATCH_DIR / "fifidx.txt"), "w", encoding="utf-8").write("\n".join(L))

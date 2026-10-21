@@ -12,6 +12,7 @@ Input is the re-detected event tables (read-only). Outputs go only to Final anal
 """
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -20,7 +21,9 @@ import pandas as pd
 
 warnings.filterwarnings("ignore")
 
-R = Path(r"D:/SO-Spindle논문")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+R = LP.PROJECT_ROOT
 EV = R / "이전/outputs/nn2023"
 TBL = R / "Final analysis/tables"
 SF = 125.0                      # common to all sessions

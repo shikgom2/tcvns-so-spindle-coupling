@@ -4,6 +4,7 @@ Input   REV_yasa_cells.csv, REV_redetect_cells.csv
 Output  REV_yasa_benchmark_densities.csv, REV_yasa_benchmark_interaction.csv"""
 from __future__ import annotations
 
+import sys
 import warnings
 from pathlib import Path
 
@@ -11,8 +12,11 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+
 warnings.filterwarnings("ignore")
-T = Path(r"D:/SO-Spindle논문/Final analysis/tables")
+T = LP.PROJECT_ROOT / "Final analysis/tables"
 REG = {"Frontal": ["Fp1", "Fp2", "F3", "F4"], "Temporal": ["F7", "F8", "T3", "T4"], "Central": ["C3", "Cz", "C4"], "Parietal": ["P3", "P4"]}
 
 

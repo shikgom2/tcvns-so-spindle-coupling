@@ -26,10 +26,12 @@ from matplotlib.lines import Line2D                               # noqa: E402
 from matplotlib.patches import FancyBboxPatch, Patch               # noqa: E402
 from matplotlib.ticker import MaxNLocator                          # noqa: E402
 
-sys.path.insert(0, r"D:/SO-Spindle논문/code/paper")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "shared"))
+import local_paths as LP  # noqa: E402
+sys.path.insert(0, str(LP.PROJECT_ROOT / "code/paper"))
 import paperstyle as PS                                           # noqa: E402
 
-R = Path(r"D:/SO-Spindle논문/Final analysis")
+R = LP.PROJECT_ROOT / "Final analysis"
 T = R / "tables"
 OUT = R / "manuscript/figures/v14oct2026/Figure_4_slow_oscillation_population_v14"
 REG = {"Frontal": ["Fp1", "Fp2", "F3", "F4"], "Temporal": ["F7", "F8", "T3", "T4"],
